@@ -10,11 +10,11 @@ namespace VanBox.DTOs
         public int Id { get; set; }       
         public string Name { get; set; }
 
-        public ICollection<FeatureDto> Features { get; set; }
+        public ICollection<VehicleDto> Vehicles { get; set; }
 
         public MdlDto()
         {
-            Features = new Collection<FeatureDto>();
+            Vehicles = new Collection<VehicleDto>();
             
         }
 

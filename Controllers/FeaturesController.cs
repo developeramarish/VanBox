@@ -9,25 +9,30 @@ using VanBox.Models;
 using VanBox.Persistence;
 
 namespace VanBox.Controllers
-{
-    public class FeaturesController : Controller
+{    
+    public class VehiclesController : Controller
     {
         private readonly VanBoxDbContext context;
         private readonly IMapper mapper;
-        public FeaturesController(VanBoxDbContext context, IMapper mapper)
+        public VehiclesController(VanBoxDbContext context, IMapper mapper)
         {
             this.mapper = mapper;
             this.context = context;
         }
 
-        // https://localhost:5001/api/features/5
-        [HttpGet("/api/features/{id}")]
-        public async Task<IEnumerable<FeatureDto>> GetFeatures(int id)
+        // https://localhost:5001/api/vehicles/5
+        [HttpGet("/api/vehicles/{id}")]
+        public async Task<IEnumerable<VehicleDto>> GetVehicles(int id)
         {
-            var features = await context.Features.Where(m => m.ModelId == id).ToListAsync(); 
+            var Vehicles = await context.Vehicles.Where(m => m.ModelId == id).ToListAsync(); 
 
-            return mapper.Map<List<Feature>,List<FeatureDto>>(features);
+            return mapper.Map<List<Vehicle>,List<VehicleDto>>(Vehicles);
         }
+
+       // [HttpGet("/api/vehicles/model-feature")]
+      //  public async Task<IEnumerable<>>
+
+
 
     }
 }

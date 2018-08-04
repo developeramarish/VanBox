@@ -3,12 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace VanBox.Migrations
 {
-    public partial class FeatureModel : Migration
+    public partial class VehicleModel : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Feature",
+                name: "Vehicle",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -18,9 +18,9 @@ namespace VanBox.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Feature", x => x.Id);
+                    table.PrimaryKey("PK_Vehicle", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Feature_Models_ModelId",
+                        name: "FK_Vehicle_Models_ModelId",
                         column: x => x.ModelId,
                         principalTable: "Models",
                         principalColumn: "Id",
@@ -28,15 +28,15 @@ namespace VanBox.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Feature_ModelId",
-                table: "Feature",
+                name: "IX_Vehicle_ModelId",
+                table: "Vehicle",
                 column: "ModelId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Feature");
+                name: "Vehicle");
         }
     }
 }

@@ -9,8 +9,8 @@ using VanBox.Persistence;
 namespace VanBox.Migrations
 {
     [DbContext(typeof(VanBoxDbContext))]
-    [Migration("20180801183344_FeatureModel")]
-    partial class FeatureModel
+    [Migration("20180801183344_VehicleModel")]
+    partial class VehicleModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,7 +20,7 @@ namespace VanBox.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("VanBox.Models.Feature", b =>
+            modelBuilder.Entity("VanBox.Models.Vehicle", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -36,7 +36,7 @@ namespace VanBox.Migrations
 
                     b.HasIndex("ModelId");
 
-                    b.ToTable("Feature");
+                    b.ToTable("Vehicle");
                 });
 
             modelBuilder.Entity("VanBox.Models.Make", b =>
@@ -73,10 +73,10 @@ namespace VanBox.Migrations
                     b.ToTable("Models");
                 });
 
-            modelBuilder.Entity("VanBox.Models.Feature", b =>
+            modelBuilder.Entity("VanBox.Models.Vehicle", b =>
                 {
                     b.HasOne("VanBox.Models.Model", "Model")
-                        .WithMany("Features")
+                        .WithMany("Vehicles")
                         .HasForeignKey("ModelId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

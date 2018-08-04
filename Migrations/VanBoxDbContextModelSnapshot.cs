@@ -24,17 +24,26 @@ namespace VanBox.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ModelId");
-
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(25);
+                        .HasMaxLength(255);
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ModelId");
-
                     b.ToTable("Features");
+                });
+
+            modelBuilder.Entity("VanBox.Models.FeatureVehicle", b =>
+                {
+                    b.Property<int>("VehicleId");
+
+                    b.Property<int>("FeatureId");
+
+                    b.HasKey("VehicleId", "FeatureId");
+
+                    b.HasIndex("FeatureId");
+
+                    b.ToTable("FeatureVehicle");
                 });
 
             modelBuilder.Entity("VanBox.Models.Make", b =>
@@ -71,11 +80,35 @@ namespace VanBox.Migrations
                     b.ToTable("Models");
                 });
 
-            modelBuilder.Entity("VanBox.Models.Feature", b =>
+            modelBuilder.Entity("VanBox.Models.Vehicle", b =>
                 {
-                    b.HasOne("VanBox.Models.Model", "Model")
-                        .WithMany("Features")
-                        .HasForeignKey("ModelId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ModelId");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(25);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ModelId");
+
+                    b.ToTable("Vehicles");
+                });
+
+            modelBuilder.Entity("VanBox.Models.FeatureVehicle", b =>
+                {
+                    b.HasOne("VanBox.Models.Feature", "Feature")
+                        .WithMany("FeatureVehicles")
+                        .HasForeignKey("FeatureId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("VanBox.Models.Vehicle", "Vehicle")
+                        .WithMany("FeatureVehicles")
+                        .HasForeignKey("VehicleId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -84,6 +117,14 @@ namespace VanBox.Migrations
                     b.HasOne("VanBox.Models.Make", "Make")
                         .WithMany("Models")
                         .HasForeignKey("MakeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("VanBox.Models.Vehicle", b =>
+                {
+                    b.HasOne("VanBox.Models.Model", "Model")
+                        .WithMany("Vehicles")
+                        .HasForeignKey("ModelId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

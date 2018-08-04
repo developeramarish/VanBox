@@ -17,11 +17,11 @@ namespace VanBox.Models
         public Make Make { get; set; }
         public int MakeId { get; set; }
 
-        public ICollection<Feature> Features { get; set; }
+        public ICollection<Vehicle> Vehicles { get; set; }
 
         public Model()
         {
-            Features = new Collection<Feature>();            
+            Vehicles = new Collection<Vehicle>();            
         }
     }
 }

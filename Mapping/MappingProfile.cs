@@ -10,7 +10,7 @@ namespace VanBox.Mapping
         {
             CreateMap<Make,MakeDto>();
             CreateMap<Model,MdlDto>();
-            CreateMap<Feature,FeatureDto>();
+            CreateMap<Vehicle,VehicleDto>();
             
         }
         
