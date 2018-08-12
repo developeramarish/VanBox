@@ -14,11 +14,11 @@ namespace VanBox.Models
         [StringLength(255)]
         public string Name { get; set; }        
 
-        public ICollection<FeatureVehicle> FeatureVehicles {get;} 
+        public ICollection<FeatureVehicle> Vehicles {get;} 
 
         public Feature()
         {
-            FeatureVehicles = new Collection<FeatureVehicle>();
+            Vehicles = new Collection<FeatureVehicle>();
         }
         
     }

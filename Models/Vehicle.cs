@@ -12,16 +12,20 @@ namespace VanBox.Models
 
         [Required]
         [StringLength(25)]
-        public string Name { get; set; }
+        public string ContactName { get; set; }
+        public int  ContactPhone { get; set; }
+        public string ContactEmail { get; set; }
+        public bool IsRegister { get; set; }
+
 
         public Model Model { get; set; }
 
         public int ModelId { get; set; }
 
-        public ICollection<FeatureVehicle> FeatureVehicles { get; }
+        public ICollection<FeatureVehicle> Features { get; }
 
         public Vehicle(){
-            FeatureVehicles = new Collection<FeatureVehicle>();
+            Features = new Collection<FeatureVehicle>();
         }
     }
 }

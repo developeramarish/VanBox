@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace VanBox.Models
 {
-    [Table("FeatureVehicle")]
+    [Table("FeatureVehicles")]
     public class FeatureVehicle
     {
         public Vehicle Vehicle { get; set; }

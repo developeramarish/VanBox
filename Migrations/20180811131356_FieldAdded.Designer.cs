@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VanBox.Persistence;
 
 namespace VanBox.Migrations
 {
     [DbContext(typeof(VanBoxDbContext))]
-    partial class VanBoxDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180811131356_FieldAdded")]
+    partial class FieldAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
