@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using VanBox.API.Data;
 
 namespace VanBox.API.Controllers
 {
@@ -10,18 +11,26 @@ namespace VanBox.API.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        public DataContext Context { get; set; }
+        public ValuesController(DataContext context)
+        {
+            this.Context = context;
+
+        }
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public IActionResult GetValues()
         {
-            return new string[] { "value1", "value2" };
+            var data = Context.Values.ToList();
+            return Ok(data);
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public IActionResult GetValues(int id)
         {
-            return "value";
+            var data = Context.Values.FirstOrDefault(x=>x.Id == id);
+            return Ok(data);
         }
 
         // POST api/values
