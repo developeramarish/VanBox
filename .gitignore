@@ -1,3 +1,2 @@
-obj/Debug
-bin/Debug
-node_modules
+VanBox.API/obj
+VanBox.API/bin/Debug
