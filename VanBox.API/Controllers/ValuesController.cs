@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using VanBox.API.Data;
 
 namespace VanBox.API.Controllers
@@ -19,17 +20,17 @@ namespace VanBox.API.Controllers
         }
         // GET api/values
         [HttpGet]
-        public IActionResult GetValues()
+        public async Task<IActionResult> GetValues()
         {
-            var data = Context.Values.ToList();
+            var data = await Context.Values.ToListAsync();
             return Ok(data);
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public IActionResult GetValues(int id)
+        public async Task<IActionResult> GetValues(int id)
         {
-            var data = Context.Values.FirstOrDefault(x=>x.Id == id);
+            var data = await Context.Values.FirstOrDefaultAsync(x=>x.Id == id);
             return Ok(data);
         }
 
