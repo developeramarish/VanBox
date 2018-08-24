@@ -1,3 +1,4 @@
+import { AuthService } from './../../_services/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,13 +10,29 @@ export class NavComponent implements OnInit {
 
   model: any = {};
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
   }
 
-  login(){
-    console.log(this.model);
+  login() {
+    this.authService.login(this.model).subscribe(
+      next => {
+        console.log('success');
+      }, error => {
+        console.log('fail');
+      }
+    );
+  }
+
+  loggedIn() {
+    const token = localStorage.getItem('token');
+    return !!token;
+  }
+
+  logOut() {
+    localStorage.removeItem('token');
+    console.log('logout');
   }
 
 }
