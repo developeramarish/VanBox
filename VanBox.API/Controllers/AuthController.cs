@@ -47,7 +47,7 @@ namespace VanBox.API.Controllers
 
         [HttpPost("Login")]
         public async Task<IActionResult> Login(UserLoginDTO userDto)
-        {
+        {            
             var user = await Repository.Login(userDto.Name.ToLower(), userDto.Password);
 
             if (user == null)
