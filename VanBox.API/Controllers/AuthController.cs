@@ -64,7 +64,7 @@ namespace VanBox.API.Controllers
 
             var tokenDescription = new SecurityTokenDescriptor{
                 Subject = new ClaimsIdentity(claim),
-                Expires = DateTime.Now.AddMinutes(6),
+                Expires = DateTime.Now.AddMinutes(60),
                 SigningCredentials = creds
             };
 

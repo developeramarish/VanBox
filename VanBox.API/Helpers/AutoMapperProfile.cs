@@ -23,6 +23,5 @@ namespace VanBox.API.Helpers
                 });
             CreateMap<Photo, PhotoForDetailsDTO>();
         }
-
     }
 }
