@@ -1,9 +1,12 @@
+import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 import { AuthGuard } from './../_guards/auth.guard';
 import { Routes } from '@angular/router';
 import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { MemberListComponent } from './members/member-list/member-list.component';
 import { HomeComponent } from './home/home.component';
+import { MembersDetailResolver } from './_resolvers/members-detail.resolver';
+import { MembersListResolver } from './_resolvers/members-list.resolver';
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -12,7 +15,8 @@ export const appRoutes: Routes = [
     runGuardsAndResolvers: 'always',
     canActivate: [AuthGuard],
     children: [
-      { path: 'members', component: MemberListComponent },
+      { path: 'members', component: MemberListComponent, resolve: {users: MembersListResolver} },
+      { path: 'members/:id', component: MemberDetailComponent, resolve: {user: MembersDetailResolver} },
       { path: 'messages', component: MessagesComponent },
       { path: 'lists', component: ListsComponent }
     ]
