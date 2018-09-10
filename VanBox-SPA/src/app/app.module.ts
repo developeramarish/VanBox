@@ -1,3 +1,4 @@
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { MembersListResolver } from './_resolvers/members-list.resolver';
 import { MembersDetailResolver } from './_resolvers/members-detail.resolver';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
@@ -25,6 +26,7 @@ import { ListsComponent } from './lists/lists.component';
 import { MemberListComponent } from './members/member-list/member-list.component';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { JwtModule } from '@auth0/angular-jwt';
+import { MemberEditResolver } from './_resolvers/members-edit.resolver';
 
 export function tokenGetter() {
     return localStorage.getItem('token');
@@ -41,7 +43,8 @@ export function tokenGetter() {
       MemberListComponent,
       MessagesComponent,
       MemberCardComponent,
-      MemberDetailComponent
+      MemberDetailComponent,
+      MemberEditComponent
    ],
    imports: [
       BrowserModule,
@@ -67,7 +70,8 @@ export function tokenGetter() {
       AuthGuard,
       UserService,
       MembersDetailResolver,
-      MembersListResolver
+      MembersListResolver,
+      MemberEditResolver
    ],
    bootstrap: [
       AppComponent
