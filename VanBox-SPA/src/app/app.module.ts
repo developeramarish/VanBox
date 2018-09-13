@@ -27,6 +27,7 @@ import { MemberListComponent } from './members/member-list/member-list.component
 import { NgxGalleryModule } from 'ngx-gallery';
 import { JwtModule } from '@auth0/angular-jwt';
 import { MemberEditResolver } from './_resolvers/members-edit.resolver';
+import { PreventUnsavedChanges } from '../_guards/prevent-unsave.guard';
 
 export function tokenGetter() {
     return localStorage.getItem('token');
@@ -68,6 +69,7 @@ export function tokenGetter() {
       ErrorInterceptorProvider,
       AlertifyService,
       AuthGuard,
+      PreventUnsavedChanges,
       UserService,
       MembersDetailResolver,
       MembersListResolver,

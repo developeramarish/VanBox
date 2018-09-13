@@ -22,6 +22,8 @@ namespace VanBox.API.Helpers
                     opt.ResolveUsing(d => d.DateOfBirth.CalculateAge());
                 });
             CreateMap<Photo, PhotoForDetailsDTO>();
+
+            CreateMap<UserForUpdateDTO,User>();
         }
     }
 }
