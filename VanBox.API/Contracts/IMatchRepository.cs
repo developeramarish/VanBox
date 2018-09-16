@@ -12,5 +12,7 @@ namespace VanBox.API.Contracts
         Task<IEnumerable<User>> GetAllUser();
         Task<User> GetUser(int Id);
 
+        Task<Photo> GetPhoto(int id);
+
     }
 }

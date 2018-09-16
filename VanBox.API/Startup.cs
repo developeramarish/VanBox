@@ -57,6 +57,7 @@ namespace VanBox.API
                 {
                     options.AddPolicy("AllowAllOrigins", GenerateCorsPolicy());
                 });
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddAutoMapper();
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IMatchRepository, MatchRepository>();

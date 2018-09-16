@@ -24,6 +24,9 @@ namespace VanBox.API.Helpers
             CreateMap<Photo, PhotoForDetailsDTO>();
 
             CreateMap<UserForUpdateDTO,User>();
+
+            CreateMap<Photo, PhotoForReturnDTO>();
+            CreateMap<PhotoForCreatorDto, Photo>();
         }
     }
 }

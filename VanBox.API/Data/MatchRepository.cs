@@ -30,6 +30,13 @@ namespace VanBox.API.Data
             return users;
         }
 
+        public async Task<Photo> GetPhoto(int id)
+        {
+            var photo = await context.Photos.FirstOrDefaultAsync(p => p.Id == id);
+
+            return photo;
+        }
+
         public async Task<User> GetUser(int Id)
         {
             var user = await context.Users.Include(p => p.Photos).FirstOrDefaultAsync(u => u.Id == Id);
